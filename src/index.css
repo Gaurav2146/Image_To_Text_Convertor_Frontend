@@ -5,9 +5,52 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:"lightblue";
+  font-size: x-small;
+}
+
+*{
+
+  margin: 0;
+  padding:0;
+  background-color:"lightblue";
+  font-size: x-small;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Gau{ background-color: rgb(124, 230, 103);display: flex; justify-content: center; border-radius: 20px; margin-left: 35%; margin-right: 35%;padding-left: 20px;padding-right: 20px;padding-top: 20px;padding-bottom: 20px;}
+
+.button {  background-color: aqua; margin-left: 245px;margin-top: 15px; border-radius: 15px; padding: 10px;}
+
+
+
+
+.Notes{ background-color: rgb(124, 230, 103);  border-radius: 20px; padding: 20px; margin-top: 40px;min-width:80px; min-height:80px;align-items: center;margin-left: 20px;}
+
+.del :hover{color: red;}
+
+.input1{  outline: none; border:none; background-color: rgb(124, 230, 103); border-bottom: 2px solid rgb(46, 28, 212);margin-top: 10px; }
+
+.input{ outline: none; border:none; background-color: rgb(124, 230, 103);margin-top: 10px; }
+
+.Gau1 :hover .input1{ background-color: rgb(206, 134, 134);}
+
+.Gau1 :hover .input{ background-color: rgb(206, 134, 134);}
+
+.Gau1 :hover{ background-color: rgb(206, 134, 134);}
+
+.input :hover{ background-color: rrgb(206, 134, 134);}
+
+.input1 :hover{ background-color: rgb(206, 134, 134);}
+
+.button :hover{ background-color: unset;}
+
+.Notes :hover{background-color: whitesmoke;border-radius: 20px; font-size: small;}
+
+.del :hover{color: red;}
+

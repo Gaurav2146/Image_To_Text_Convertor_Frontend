@@ -36,7 +36,7 @@ async function sendPostRequestWithToken(url, data, token) {
 
 // Example usage
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
-const accessToken = 'sk-proj-xdS1ArtQyPRyHHgqfxn3T3BlbkFJEMEIm3hkfxa01YRN7nO9'; // Replace with your Bearer token
+const accessToken = 'sk-proj-PcENvLln4Tp8kBA52aVVT3BlbkFJakuQkuIK3hYlOFFgTIA7'; // Replace with your Bearer token
 
 app.post("/getResponse", async (req, res, next) => {
   try {

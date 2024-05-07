@@ -135,12 +135,13 @@
         </div>
     </div>
 
-    <!-- <div style="display: flex; justify-content: center; margin-top: 100px;">
-    <button onclick="convertImageToText()">Convert</button>
-    </div> -->
-
-    <div style="display: flex; justify-content: center;border: 1px solid gray; min-height: 100px;max-width: 60%;margin-left: 20%; margin-right: 20%; overflow-y: scroll;padding: 10px 10px;border-radius: 5px;">
+    <div
+        style="display: flex; justify-content: center;border: 1px solid gray; min-height: 100px;max-width: 60%;margin-left: 20%; margin-right: 20%; overflow-y: scroll;padding: 10px 10px;border-radius: 5px;">
         <div id="output"></div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 10px;">
+        <button onclick="getResponse()">Convert</button>
     </div>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
@@ -150,9 +151,13 @@
     <script src="./tesseract.js"></script>
 
     <script>
+
+        const fileInput = document.getElementById('filer_input2');
+        const outputDiv = document.getElementById('output');
+
         async function convertImageToText() {
-            const fileInput = document.getElementById('filer_input2');
-            const outputDiv = document.getElementById('output');
+            // const fileInput = document.getElementById('filer_input2');
+            // const outputDiv = document.getElementById('output');
 
             // Check if a file is selected
             if (fileInput.files.length === 0) {
@@ -174,6 +179,38 @@
 
             // Display the recognized text
             outputDiv.textContent = text;
+        }
+
+        async function getResponse() {
+
+            let inputText = (outputDiv.textContent).trim();
+
+            const postData = {
+                content: inputText,
+            };
+
+            fetch('http://localhost:5000/getResponse', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any additional headers here, such as Authorization header for Bearer token
+                    // 'Authorization': 'Bearer YOUR_TOKEN'
+                },
+                body: JSON.stringify(postData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    outputDiv.textContent = "";
+                    outputDiv.textContent = data.responseData;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the POST request:', error);
+                });
         }
 
     </script>

@@ -137,7 +137,7 @@
 
    
 
-    <textarea style="border: 1px solid gray; min-height: 200px;min-width: 60%;max-width: 60%;margin-left: 20%; margin-right: 20%; overflow-y: scroll;padding: 10px 10px;border-radius: 5px;" id="output" rows="1" cols="20"></textarea>
+    <textarea id="output" rows="1" cols="20" style="border: 1px solid gray; min-height: 200px;min-width: 60%;max-width: 60%;margin-left: 20%; margin-right: 20%; overflow-y: scroll;padding: 10px 10px;border-radius: 5px;"></textarea>
 
     <div style="display: flex; justify-content: center; margin-top: 10px;">
         <button onclick="getResponse()">Convert</button>
@@ -156,9 +156,9 @@
 
     <script>
 
-        const fileInput = document.getElementById('filer_input2');
-        const outputDiv = document.getElementById('output');
-        const resultDiv = document.getElementById('result');
+        let fileInput = document.getElementById('filer_input2');
+        let outputDiv = document.getElementById('output');
+        let resultDiv = document.getElementById('result');
 
         async function convertImageToText() {
             // const fileInput = document.getElementById('filer_input2');
@@ -188,11 +188,16 @@
 
         async function getResponse() {
 
-            let inputText = (outputDiv.textContent).trim();
+          outputDiv = document.getElementById("output");
 
-            const postData = {
-                content: inputText,
-            };
+         // Get the value from the text area
+         let inputText = (outputDiv.value).trim();
+
+         //let inputText = (outputDiv.textContent).trim();
+
+        const postData = {
+            content: inputText,
+        };
 
             fetch('http://localhost:5000/getResponse', {
                 method: 'POST',
